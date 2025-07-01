@@ -1,0 +1,107 @@
+
+{
+  "instructorId": "7",
+  "instructorName": "john guttag",
+  "title": "MERN One Stop Solution",
+  "category": "web development",
+  "level": "intermediate",
+  "primaryLanguage": "english",
+  "subtitle": "english",
+  "description": "A comprehensive guide to building full-stack applications using the MERN stack. You’ll learn how MongoDB, Express.js, React, and Node.js work together to deliver robust, scalable web apps, with hands-on projects and best practices for production deployment.",
+  "image":"https://res.cloudinary.com/dpsqzixmj/image/upload/v1746295539/e8xn0uyqtnonxi9daw78.jpg",
+  "welcomeMessage": "Welcome to the MERN One Stop Solution course!",
+  "pricing": 49.99,
+  "objectives": "Understand the MERN architecture, Set up a full-stack development environment, Perform CRUD operations with MongoDB, Build RESTful APIs with Express and Node, Create dynamic UIs with React, Implement authentication and authorization, Manage application state, Deploy MERN applications to production",
+  "isPublished": true,
+  "curriculum": {
+    "create": [
+      {
+        "title": "Introduction to the MERN Stack",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": true
+      },
+      {
+        "title": "MongoDB Basics & Data Modeling",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Express.js and Routing",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/azugcck1drtn8xtbeywu.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Node.js Core Concepts",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254519/mxfhfxzx80li9ozxmj4z.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Setting Up React with Create React App",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "State Management with Redux",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Connecting Backend APIs to React",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/azugcck1drtn8xtbeywu.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "User Authentication with JWT",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254519/mxfhfxzx80li9ozxmj4z.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Form Handling and Validation",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Error Handling & Debugging",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Deploying MERN Apps on Heroku",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/azugcck1drtn8xtbeywu.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Performance Optimization Techniques",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254519/mxfhfxzx80li9ozxmj4z.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Real-time Data with Socket.io",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Full-Stack Capstone Project",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      }
+    ]
+  },
+  "students": {
+    "create": []
+  }
+}

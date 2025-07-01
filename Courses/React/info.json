@@ -1,0 +1,100 @@
+{
+  "instructorId": "7",
+  "instructorName": "john guttag",
+  "title": "React Js",
+  "category": "web development",
+  "level": "intermediate",
+  "primaryLanguage": "english",
+  "subtitle": "english",
+  "description": "Learn how to build dynamic, component-based web applications using React.js. This course covers React fundamentals, state management, hooks, routing, performance optimization, testing, and deployment through practical examples and projects.",
+  "image":"https://res.cloudinary.com/dpsqzixmj/image/upload/v1746295706/h1viknb2i1rea32drprm.jpg",
+  "welcomeMessage": "Welcome to the React Js course!",
+  "pricing": 49.99,
+  "objectives": "Understand React component architecture, Manage state with hooks and context, Build reusable components, Implement client-side routing, Optimize performance with memoization, Test React applications",
+  "isPublished": true,
+  "curriculum": {
+    "create": [
+      {
+        "title": "Introduction to React and JSX",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": true
+      },
+      {
+        "title": "Creating Functional and Class Components",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Props, State, and Lifecycle",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/azugcck1drtn8xtbeywu.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Handling Events and Forms",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254519/mxfhfxzx80li9ozxmj4z.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Using React Hooks: useState & useEffect",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Custom Hooks and Context API",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "React Router for Client-Side Navigation",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/azugcck1drtn8xtbeywu.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "State Management with Redux",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254519/mxfhfxzx80li9ozxmj4z.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Styling React Components",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Fetching Data with Axios",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Optimizing Performance with React.memo",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/azugcck1drtn8xtbeywu.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Testing Components with Jest & React Testing Library",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254519/mxfhfxzx80li9ozxmj4z.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Deploying React Apps to Netlify",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      }
+    ]
+  },
+  "students": {
+    "create": []
+  }
+}

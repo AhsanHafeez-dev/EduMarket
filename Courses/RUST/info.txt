@@ -1,0 +1,106 @@
+{
+  "instructorId": "7",
+  "instructorName": "john guttag",
+  "title": "Rust Wonders",
+  "category": "backend development",
+  "level": "advanced",
+  "primaryLanguage": "english",
+  "subtitle": "english",
+  "description": "Discover the power and safety of Rust for building high-performance, reliable systems. This course covers Rust’s ownership model, memory safety, concurrency features, and ecosystem tools through real-world projects and hands-on examples.",
+  "image":"https://res.cloudinary.com/dpsqzixmj/image/upload/v1746295739/cgcll8wspycbiwojzuze.jpg",
+  "welcomeMessage": "Welcome to the Rust Wonders course!",
+  "pricing": 54.99,
+  "objectives": "Understand Rust’s ownership and borrowing, Write safe and performant Rust code, Use Rust’s type system and error handling, Build concurrent and parallel programs, Work with Cargo and crates ecosystem, Interface Rust with other languages, Apply testing and debugging techniques",
+  "isPublished": true,
+  "curriculum": {
+    "create": [
+      {
+        "title": "Introduction to Rust and Tooling",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": true
+      },
+      {
+        "title": "Variables, Mutability, and Data Types",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Ownership, Borrowing, and Lifetimes",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/azugcck1drtn8xtbeywu.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Structs, Enums, and Pattern Matching",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254519/mxfhfxzx80li9ozxmj4z.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Error Handling with Result and Option",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Collections, Iterators, and Closures",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Concurrency with Threads and async/await",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/azugcck1drtn8xtbeywu.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Building and Managing Projects with Cargo",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254519/mxfhfxzx80li9ozxmj4z.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Interfacing Rust with C and Other Languages",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Macro Rules and Procedural Macros",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Testing and Benchmarking in Rust",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/azugcck1drtn8xtbeywu.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Advanced Memory and Unsafe Rust",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254519/mxfhfxzx80li9ozxmj4z.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Building Web Services with Actix and Rocket",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Deploying Rust Applications",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      }
+    ]
+  },
+  "students": {
+    "create": []
+  }
+}

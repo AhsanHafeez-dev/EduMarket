@@ -1,0 +1,101 @@
+
+{
+  "instructorId": "7",
+  "instructorName": "john guttag",
+  "title": "Deep Learning",
+  "category": "machine learning",
+  "level": "advanced",
+  "primaryLanguage": "english",
+  "subtitle": "english",
+  "description": "Delve into the world of deep learning and neural networks. This course covers theory, architectures, training techniques, and real-world applications using popular frameworks like TensorFlow and PyTorch, with hands-on projects from image recognition to sequence modeling.",
+  "image":"https://res.cloudinary.com/dpsqzixmj/image/upload/v1746295289/ldue99ertcpjh601i6zz.jpg",
+  "welcomeMessage": "Welcome to the Deep Learning course!",
+  "pricing": 69.99,
+  "objectives": "Understand deep learning fundamentals, Build and train neural networks, Implement convolutional neural networks, Explore recurrent and sequence models, Apply regularization and optimization techniques, Work with TensorFlow and PyTorch, Design advanced architectures like GANs and VAEs",
+  "isPublished": true,
+  "curriculum": {
+    "create": [
+      {
+        "title": "Introduction to Deep Learning",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": true
+      },
+      {
+        "title": "Neural Network Basics",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Training and Optimization",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/azugcck1drtn8xtbeywu.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Convolutional Neural Networks (CNNs)",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254519/mxfhfxzx80li9ozxmj4z.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Recurrent Neural Networks (RNNs)",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Sequence Modeling with LSTMs and GRUs",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Regularization and Dropout",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/azugcck1drtn8xtbeywu.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Advanced Optimizers (Adam, RMSprop)",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254519/mxfhfxzx80li9ozxmj4z.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Autoencoders and Variational Autoencoders",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Generative Adversarial Networks (GANs)",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Transfer Learning and Fine-Tuning",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/azugcck1drtn8xtbeywu.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Sequence-to-Sequence Models and Attention",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254519/mxfhfxzx80li9ozxmj4z.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Deploying Models with TensorFlow Serving",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      }
+    ]
+  },
+  "students": {
+    "create": []
+  }
+}

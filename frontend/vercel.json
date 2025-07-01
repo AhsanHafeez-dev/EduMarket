@@ -1,0 +1,27 @@
+{
+    "version": 2,
+    "name": "frontend",
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/next"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/_next/static/(.*)",
+        "headers": {
+          "cache-control": "public, max-age=31536000, immutable"
+        }
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/"
+      }
+    ],
+    "env": {
+      "MY_API_URL": "@my-api-url",
+      "NEXT_PUBLIC_ANALYTICS_ID": "@next-public-analytics-id"
+    }
+  }
+  

@@ -1,0 +1,94 @@
+{
+  "instructorId": "7",
+  "instructorName": "john guttag",
+  "title": "Data Analytics",
+  "category": "data science",
+  "level": "beginner",
+  "primaryLanguage": "english",
+  "subtitle": "english",
+  "description": "Learn the core principles and tools of data analytics, from data collection and cleaning to exploratory analysis and visualization. This course provides hands-on practice with real datasets and teaches you industry-standard workflows to turn raw data into actionable insights.",
+  "image": "https://res.cloudinary.com/dpsqzixmj/image/upload/v1746295087/oqaygtxzn5bvptagxwza.jpg",
+  "welcomeMessage": "Welcome to the Data Analytics course!",
+  "pricing": 29.99,
+  "objectives": "Understand the data analytics process, Clean and preprocess raw data, Perform exploratory data analysis, Create compelling data visualizations, Apply basic statistical methods, Use SQL and Excel for analysis, Leverage Python libraries for data wrangling",
+  "isPublished": true,
+  "curriculum": {
+    "create": [
+      {
+        "title": "Introduction to Data Analytics",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": true
+      },
+      {
+        "title": "Data Collection and Cleaning",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Exploratory Data Analysis (EDA)",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/azugcck1drtn8xtbeywu.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Data Visualization Techniques",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254519/mxfhfxzx80li9ozxmj4z.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Statistical Foundations for Analytics",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Working with SQL Databases",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Excel for Data Analysis",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/azugcck1drtn8xtbeywu.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Python Basics for Analytics",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254519/mxfhfxzx80li9ozxmj4z.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Data Wrangling with Pandas",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254505/dtar31ftvnhhwebtlcnl.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Dashboarding with Tableau",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/wmtai49p6qpoa4esjjt9.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Time Series Analysis Basics",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254537/azugcck1drtn8xtbeywu.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      },
+      {
+        "title": "Capstone Project: From Data to Insight",
+        "videoUrl": "https://res.cloudinary.com/dpsqzixmj/video/upload/v1746254519/mxfhfxzx80li9ozxmj4z.mp4",
+        "publicId": "qbxf9b9zffoqs1z374ar",
+        "freePreview": false
+      }
+    ]
+  },
+  "students": {
+    "create": []
+  }
+}

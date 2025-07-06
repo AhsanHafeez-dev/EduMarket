@@ -1,25 +1,11 @@
-import { asyncHandler } from "../../utils/asyncHandler.js"; 
-import { prisma } from "../../prisma/index.js"
-import { httpCodes } from "../../constants.js"
-import { ApiResponse } from "../../utils/ApiResponse.js";
+import { Router } from "express";
+import { getRecommendationForCourse,getRequiredDataForRecommendation } from "../../controllers/recommendation-controllers/recommendation.controller.js";
+const courseRecommendationRouter = Router();
 
-// this data will be fetched by python's api to train model and then provide recommendation on demand
-const getAllCourseDataForRecommendation = asyncHandler(
-    async (req, res) => {
-        const courses=await prisma.course.findMany({
-            select: {
-                id: true,
-                tags: true,
-                title:true
-            }
-        })
-        res.status(httpCodes.ok).json(new ApiResponse(httpCodes.ok, courses, "all courses fetched successfully"));
-        
-    }
-)
+courseRecommendationRouter.route("/get/:courseId").get(getRecommendationForCourse)
 
-const getRecommendation = asyncHandler(
-    async (req, res) => {
-        fetch(`${process.env.PYTHON_API_URL}/recommendation/get`);
-    }
-);
+courseRecommendationRouter.route("/get").get(getRequiredDataForRecommendation);
+
+
+
+export { courseRecommendationRouter };

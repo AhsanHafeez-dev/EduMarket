@@ -26,7 +26,7 @@ import {studentViewCourseRoutes} from "./routes/student-routes/course-routes.js"
 import {studentViewOrderRoutes} from "./routes/student-routes/order-routes.js";
 import {studentCoursesRoutes} from "./routes/student-routes/student-courses-routes.js";
 import {studentCourseProgressRoutes} from "./routes/student-routes/course-progress-routes.js";
-
+import {courseRecommendationRouter} from "./routes/courseRecommendation/course.controller.js"
 
 app.use("/auth", authRoutes);
 app.use("/media", mediaRoutes);
@@ -37,12 +37,8 @@ app.use("/student/courses-bought", studentCoursesRoutes);
 app.use("/student/course-progress", studentCourseProgressRoutes);
 app.use("/comments", commentRouter);
 app.use("/like", likeRouter);
+app.use("/recommendation", courseRecommendationRouter);
 
-
-app.route('/login').post(async (req, res) => {
-  console.log(req.body);
-  res.status(200).json({message :req.body});
-})
 
 app.use((error, req, res, next) => {
     console.log(error.stack);

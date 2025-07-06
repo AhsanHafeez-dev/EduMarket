@@ -1,4 +1,5 @@
 import pandas as pd
+import requests
 from supabase import create_client, Client
 key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhueGNyZWlwaXN0a3BnYXV0amZ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU2NDE2NjgsImV4cCI6MjA2MTIxNzY2OH0e9yAdd5ANm7vOc4X7K6OiVCTsF_qwbe6j_cPqyuFDMQ"
 DATABASE_URL="postgresql://postgres:Hamza@3755@db.xnxcreipistkpgautjfu.supabase.co:5432/postgres"
@@ -11,52 +12,34 @@ import os
 
 app=Flask(__name__)
 
-# Load environment variables from .env
-load_dotenv()
 
-# Fetch variables
-USER = os.getenv("user")
-PASSWORD = os.getenv("password")
-HOST = os.getenv("host")
-PORT = os.getenv("port")
-DBNAME = os.getenv("dbname")
+def getDataFromApi():
+    # Replace this with the IP your host (Windows) exposes to WSL2
+    url = "http://localhost:5000/recommendation/get"
+    try:
+        resp = requests.get(url, timeout=5)
+        resp.raise_for_status()   # Raises HTTPError if the status is 4xx/5xx
+    except requests.exceptions.RequestException as e:
+        print("Failed to fetch from Node API:", e)
+        return None
 
-# Connect to the database
-def getData():
-    connection = psycopg2.connect(
-        user=USER,
-        password=PASSWORD,
-        host=HOST,
-        port=PORT,
-        dbname=DBNAME
-    )
-    print("Connection successful!")
+    # If we get here, resp is a 200‑level response
+    try:
+        data = resp.json()
+    except ValueError:
+        print("Failed to decode JSON from response")
+        return None
     
-    # Create a cursor to execute SQL queries
-    cursor = connection.cursor()
-    cursor.execute('SELECT * FROM "Course";')
-    result = cursor.fetchall()
-    # print(result)    
-
+    items = data.get("data", [])
     data={}
-    data["courseName"]=[]
-    data["tags"]=[]
-    data["id"]=[]
-    for r in (result):
-        
-        data["courseName"].append(str(r[4]))
-        data["tags"].append(str(r[18]) +" " + str(r[13]) +" " +str(r[5]) +" " +str(r[6]) +" "+str(r[9]))
-        data["id"].append(r[0])
-    cursor.close()
-    connection.close()
-    print("Connection closed.")
-    
+    data["courseName"]=items[0]
+    data["tags"]=items[1]
+    data["id"]=items[2]
     return data
 
+data=getDataFromApi()
 
 
-data=getData()
-# pprint(data)
 data=pd.DataFrame(data)
 
 from sklearn.feature_extraction.text import CountVectorizer
@@ -81,7 +64,7 @@ vectors=cv.fit_transform(data["tags"]).toarray()
 similarities=cosine_similarity(vectors)
 
 def recommend(movie,n):
-    
+    print(data)
     movie_index=data[data["courseName"]==movie].index[0]
     # print(data["tags"][movie_index])
     distance=similarities[movie_index]    
@@ -103,7 +86,7 @@ def checkSimilar(title1,title2):
     if(rt):
         print("True for  : ",title1,"  ",title2)
     return rt
-def search(movie,n):
+def search(movie,n=10):
     
     
     mask=data["courseName"].apply(lambda x:checkSimilar(x,movie   )  )
@@ -124,11 +107,32 @@ def search(movie,n):
         rt.append(data["courseName"][i[0]])
     return rt    
 
-@app.route('/recommendation/get/<courseName>',methods=["GET"])
+@app.route('/recommendation/get/',methods=["GET","POST"])
 def getRecommendation():
-    course=request.form.get("courseName")
-    limit=request.form.get("limit")
-    recommendations=recommend(course,limit)
+    data = request.get_json(force=True) 
+    course_name  = data.get("courseName")   
+    limit        = data.get("limit", 10)     
+    # for future pagination 
+    # pageNo       = data.get("pageNo", 10)      
+    
+    print("searching for ",course_name)
+    
+    # print("searching for ",course)
+    recommendations=recommend(course_name,limit)
 
-    return recommendations
-print(search("Redux",10))
+    return {"statusCode":200,"data":recommendations,"message":"recommendation fetched successfully"}
+
+@app.route('/search',methods=["POST"])
+def getSearchResult():
+
+    data = request.get_json(force=True) 
+    course_name = data.get("word") 
+    print("searching for ",course_name)
+    
+    # print("searching for ",course)
+    searchResults=search(course_name)
+
+    return {"statusCode":200,"data":searchResults,"message":"search Result fetched successfully"}
+
+
+app.run(host='0.0.0.0', port=3000,debug=True)

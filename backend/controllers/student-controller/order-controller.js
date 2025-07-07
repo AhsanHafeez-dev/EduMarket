@@ -4,6 +4,7 @@ import { prisma } from "../../prisma/index.js";
 import { ApiResponse } from "../../utils/ApiResponse.js";
 import { PAYMENT_CONFIRMATION_TEMPLATE } from "../../utils/EmailTemplate.js";
 import { transporter } from "../../utils/email.js";
+import { addToLowPriorityNotificationQueue } from "../../utils/notification.js";
 
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -210,7 +211,7 @@ const createOrder = async (req, res) => {
         .replace("{{receiptLink}}",session.payment_link),
     };
     
-    await transporter.sendMail(mailOptions);
+    addToLowPriorityNotificationQueue("purchase email",mailOptions);
 
     // 3) Return the URL to redirect your user to
     res.status(httpCodes.created).json({

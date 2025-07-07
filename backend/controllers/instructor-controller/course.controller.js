@@ -4,7 +4,7 @@ import { ApiError } from "../../utils/ApiError.js";
 import { ApiResponse } from "../../utils/ApiResponse.js";
 import { transporter } from "../../utils/email.js"
 import {COURSE_UPDATE_NOTIFICATION_TEMPLATE} from "../../utils/EmailTemplate.js"
-
+import {addBulkToLowPriorityNotificationQueue} from "../../utils/notification.js"
 
 const addNewCourse = async (req, res) => {
   try {
@@ -150,30 +150,27 @@ const updateCourseById = async (req, res) => {
         .status(httpCodes.notFound)
         .json(new ApiResponse(httpCodes.notFound, {}, "course didnot exiits"));
     }
-    
-    updatedCourse.students.map(async (std) =>
-    {
-      const mailOptions = {
-        from: process.env.SENDER_EMAIL,
-        to: std.studentEmail,
-        subject: "Course update",
-        // text:registrationText
-        html: COURSE_UPDATE_NOTIFICATION_TEMPLATE.replaceAll(
-          "{{courseTitle}}",
-          updatedCourse.title
+    const subject = `Course Update`;
+
+    const allStudentEmails = updatedCourse.students.map(item => ({
+      "userEmail": item.studentEmail, subject,
+      html:COURSE_UPDATE_NOTIFICATION_TEMPLATE.replaceAll(
+        "{{courseTitle}}",
+        updatedCourse.title
+      )
+        .replace("{{name}}", item.studentName)
+        .replace(
+          "{{updateDescription}}",
+          "we have added some updates to lectures"
         )
-          .replace("{{name}}", std.studentName)
-          .replace(
-            "{{updateDescription}}",
-            "we have added some updates to lectures"
-          )
-          .replace(
-            "{{courseLink}}",
-            `${process.env.CLIENT_URL}/student/course-progress/${updatedCourse.id}`
-          ),
-      };
-      transporter.sendMail(mailOptions);
-    });
+        .replace(
+          "{{courseLink}}",
+          `${process.env.CLIENT_URL}/student/course-progress/${updatedCourse.id}`
+        )
+  }));
+    addBulkToLowPriorityNotificationQueue("updation email", allStudentEmails); 
+    
+    
     
     console.log("course updated successfully sending response");
 

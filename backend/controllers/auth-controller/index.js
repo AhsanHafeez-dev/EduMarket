@@ -8,7 +8,7 @@ import {validateUserDetails} from "../../utils/validate.js"
 import jwt from "jsonwebtoken"
 import {EMAIL_VERIFY_TEMPLATE,PASSWORD_RESET_TEMPLATE, WELCOME_TEMPLATE} from "../../utils/EmailTemplate.js"
 import { transporter } from "../../utils/email.js";
-
+import { addBulkToLowPriorityNotificationQueue,addToHighPriorityNotificationQueue,addToLowPriorityNotificationQueue } from "../../utils/notification.js";
 
 const registerUser = async (req, res) => {
     
@@ -59,13 +59,13 @@ const registerUser = async (req, res) => {
     
         console.log("going to send email functions")
   const mailOptions = {
-    from: process.env.SENDER_EMAIL,
-    to: userEmail,
+    
+     userEmail,
     subject: "Welcome to Duet Learning",
-    // text:registrationText
-    html:WELCOME_TEMPLATE
+    
+    html:WELCOME_TEMPLATE.replaceAll("{{name}}",userName)
   };
-    transporter.sendMail(mailOptions)
+  addToLowPriorityNotificationQueue("registration email", mailOptions);
     
     
     
@@ -196,7 +196,8 @@ const sendVeirfyOtp = asyncHandler(
       subject: "Email Verification",
       html:EMAIL_VERIFY_TEMPLATE.replace("{{otp}}", otp).replace("{{email}}", user.userEmail)
     };
-    transporter.sendMail(mailOptions)
+    
+    addToHighPriorityNotificationQueue("send otp",mailOptions)
 
     res
       .status(httpCodes.ok)
@@ -268,7 +269,8 @@ const sendPasswordResetOtp = asyncHandler(
       subject: "Password Reset Otp",
       html: PASSWORD_RESET_TEMPLATE.replace("{{otp}}", otp).replace("{{email}}", user.userEmail),
     };
-    transporter.sendMail(mailOptions)
+    addToHighPriorityNotificationQueue("password reset", mailOptions);
+    
 
     res
       .status(httpCodes.ok)

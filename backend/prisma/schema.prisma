@@ -170,11 +170,11 @@ model StudentCourse {
 model Comment {
   id String @id @default(cuid())
 
-  comment   Comment?  @relation("CommentToComment", fields: [commentId], references: [id])
+  comment   Comment?  @relation("CommentToComment", fields: [commentId], references: [id],onDelete: Cascade)
   commentId String?
   comments  Comment[] @relation("CommentToComment")
 
-  lecture   Lecture? @relation(fields: [lectureId], references: [id])
+  lecture   Lecture? @relation(fields: [lectureId], references: [id],onDelete: Cascade)
   lectureId Int?
 
   course   Course? @relation(fields: [courseId], references: [id])
@@ -186,7 +186,7 @@ model Comment {
   noOfReplies Int @default(0)
   noOfLikes   Int @default(0)
 
-  owner   User @relation(fields: [ownerId], references: [id])
+  owner   User @relation(fields: [ownerId], references: [id],onDelete: Cascade)
   ownerId Int
 }
 
@@ -248,26 +248,28 @@ enum SubmissionStatus {
 
 model Quiz {
   id               String   @id @default(cuid())
-  course           Course   @relation(fields: [courseId], references: [id])
+  course           Course   @relation(fields: [courseId], references: [id],onDelete: Cascade)
   courseId         Int
   title            String
+  subject          String
   description      String?
+  difficulty       String
   timeLimitMin     Int? /// in minutes, null = untimed
   shuffleQuestions Boolean  @default(false)
   createdAt        DateTime @default(now())
 
-  questions Question[]
+  questions Question[]      
   attempts  QuizAttempt[]
 }
 
 model Question {
   id     String       @id @default(cuid())
-  quiz   Quiz         @relation(fields: [quizId], references: [id])
+  quiz   Quiz         @relation(fields: [quizId], references: [id],onDelete: Cascade)
   quizId String
-  type   QuestionType
-  prompt String
+  type   String
+  question String
   points Int          @default(1)
-
+  hint String
   options     Option[] /// for MCQ / TRUE_FALSE
   // for fill-in-blank you can compare against `correctText`
   correctText String? /// for FILL_IN_BLANK
@@ -276,8 +278,9 @@ model Question {
 
 model Option {
   id                String             @id @default(cuid())
-  question          Question           @relation(fields: [questionId], references: [id])
+  question          Question           @relation(fields: [questionId], references: [id],onDelete: Cascade)
   questionId        String
+  
   text              String
   isCorrect         Boolean            @default(false)
   questionResponses QuestionResponse[]
@@ -286,9 +289,9 @@ model Option {
 /// captures each student’s run at a quiz
 model QuizAttempt {
   id          String    @id @default(cuid())
-  quiz        Quiz      @relation(fields: [quizId], references: [id])
+  quiz        Quiz      @relation(fields: [quizId], references: [id],onDelete: Cascade)
   quizId      String
-  user        User      @relation(fields: [userId], references: [id])
+  user        User      @relation(fields: [userId], references: [id],onDelete: Cascade)
   userId      Int
   startedAt   DateTime  @default(now())
   submittedAt DateTime?
@@ -299,9 +302,9 @@ model QuizAttempt {
 
 model QuestionResponse {
   id         String      @id @default(cuid())
-  attempt    QuizAttempt @relation(fields: [attemptId], references: [id])
+  attempt    QuizAttempt @relation(fields: [attemptId], references: [id],onDelete: Cascade)
   attemptId  String
-  question   Question    @relation(fields: [questionId], references: [id])
+  question   Question    @relation(fields: [questionId], references: [id],onDelete: Cascade)
   questionId String
 
   /// one of these will be used depending on question type
@@ -316,9 +319,9 @@ model QuestionResponse {
 
 model Assignment {
   id        String   @id @default(cuid())
-  course    Course   @relation(fields: [courseId], references: [id])
+  course    Course   @relation(fields: [courseId], references: [id],onDelete: Cascade)
   courseId  Int
-  lecture   Lecture? @relation(fields: [lectureId], references: [id])
+  lecture   Lecture? @relation(fields: [lectureId], references: [id],onDelete: Cascade)
   lectureId Int? /// tie assignment to a lecture if you want
 
   title         String
@@ -332,9 +335,9 @@ model Assignment {
 
 model Submission {
   id           String           @id @default(cuid())
-  assignment   Assignment       @relation(fields: [assignmentId], references: [id])
+  assignment   Assignment       @relation(fields: [assignmentId], references: [id],onDelete: Cascade)
   assignmentId String
-  student      User             @relation(fields: [studentId], references: [id])
+  student      User             @relation(fields: [studentId], references: [id],onDelete: Cascade)
   studentId    Int
   submittedAt  DateTime         @default(now())
   fileUrls     String[]         @default([]) /// array of S3 URLs, etc.
@@ -344,6 +347,6 @@ model Submission {
   feedback     String?
 
   gradedAt DateTime?
-  grader   User?     @relation("Grader", fields: [graderId], references: [id])
+  grader   User?     @relation("Grader", fields: [graderId], references: [id],onDelete: Cascade)
   graderId Int?
 }

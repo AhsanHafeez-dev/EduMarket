@@ -32,6 +32,8 @@ app.use(
       "https://j9r4m1mn-5000.asse.devtunnels.ms/",
       "https://j9r4m1mn-3000.asse.devtunnels.ms",
       "https://j9r4m1mn-3000.asse.devtunnels.ms/",
+      "https://edu-front-end-xi.vercel.app/",
+      "https://edu-front-end-xi.vercel.app",
     ],
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: ["Content-Type", "Authorization"],

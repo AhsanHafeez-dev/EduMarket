@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  redis:
+    image : redis:7
+    
+    ports:
+      - "6379:6379"
+
+  node:
+    build: .
+    ports : 
+      - "5000:5000"
+    depends_on:
+      - redis
+    env_file:
+      - .env
+    environment:
+      # These ensure your Node app can reach Redis *inside Docker*
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379    

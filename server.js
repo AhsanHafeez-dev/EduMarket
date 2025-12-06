@@ -1,0 +1,113 @@
+import dotenv from "dotenv";
+dotenv.config({ path: "./env" });
+import cors from "cors";
+import express from "express";
+import cookie from "cookie-parser";
+const app = express();
+
+
+app.post(
+  "/student/order/confirm", // The full path to your webhook
+  express.raw({ type: "application/json" }),
+  confirmPayment
+);
+
+
+app.use(express.json({ limit: "16kb" }));
+app.set("json replacer", (key, value) =>
+  typeof value === "bigint" ? value.toString() : value
+  
+);
+app.use(express.urlencoded({ extended: true,limit:"16kb" }));
+app.use(cookie())
+app.use(
+  cors({
+    origin: [
+      "https://edu-front-i9kud6sun-ahsans-projects-6799ab6a.vercel.app",
+      "https://edu-front-i9kud6sun-ahsans-projects-6799ab6a.vercel.app/",
+      "http://localhost:3000", // for local testing,
+      "https://edu-front-ind36pu3d-ahsans-projects-6799ab6a.vercel.app/",
+      "http://192.168.29.1:3000",
+      "http://localhost:3000",
+      "https://j9r4m1mn-5000.asse.devtunnels.ms/",
+      "https://j9r4m1mn-3000.asse.devtunnels.ms",
+      "https://j9r4m1mn-3000.asse.devtunnels.ms/",
+    ],
+    methods: ["GET", "POST", "DELETE", "PUT"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+import { logger } from "./utils/logger.js";
+import morgan from "morgan";
+
+const morganFormat = ":method :url :status :response-time ms";
+
+app.use(
+  morgan(morganFormat, {
+    stream: {
+      write: (message) => {
+        const logObject = {
+          method: message.split(" ")[0],
+          url: message.split(" ")[1],
+          status: message.split(" ")[2],
+          responseTime: message.split(" ")[3],
+          
+        };
+        logger.info(JSON.stringify(logObject));
+      },
+    },
+  })
+);
+
+
+
+
+
+
+import { authRoutes } from "./routes/auth-routes/index.js"
+import {instructorCourseRoutes} from "./routes/instructor-routes/course-routes.js"
+import { likeRouter } from "./routes/like-comment-routes/like.routes.js";
+import { commentRouter } from "./routes/like-comment-routes/comment.routes.js";
+import  {mediaRoutes} from "./routes/instructor-routes/media-routes.js";
+
+import {studentViewCourseRoutes} from "./routes/student-routes/course-routes.js";
+import {studentViewOrderRoutes} from "./routes/student-routes/order-routes.js";
+import {studentCoursesRoutes} from "./routes/student-routes/student-courses-routes.js";
+import {studentCourseProgressRoutes} from "./routes/student-routes/course-progress-routes.js";
+import {courseRecommendationRouter} from "./routes/courseRecommendation/course.controller.js"
+import { confirmPayment } from "./controllers/student-controller/order-controller.js";
+
+app.use("/auth", authRoutes);
+app.use("/media", mediaRoutes);
+app.use("/instructor/course", instructorCourseRoutes);
+app.use("/student/course", studentViewCourseRoutes);
+app.use("/student/order", studentViewOrderRoutes);
+app.use("/student/courses-bought", studentCoursesRoutes);
+app.use("/student/course-progress", studentCourseProgressRoutes);
+app.use("/comments", commentRouter);
+app.use("/like", likeRouter);
+app.use("/recommendation", courseRecommendationRouter);
+
+
+app.get("/", (req, res) => {
+  return res.status(200).json({ message: "welcome to course app" });
+})
+
+app.use((error, req, res, next) => {
+    console.log(error.stack);
+    
+    
+})
+
+
+const port = process.env.PORT || 5000;
+// app.listen(port, () => {
+//   console.log(`app listening on port ${port}`);
+//   logger.info(`app listening on port ${port}`);
+// });
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "hello moto" });
+});
+export default app;
+

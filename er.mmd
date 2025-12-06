@@ -1,0 +1,108 @@
+
+```mermaid
+erDiagram
+    USER {
+        Int id PK "autoincrement"
+        String userName "unique"
+        String userEmail "unique"
+        String password
+        String role
+    }
+
+    COURSE {
+        Int id PK "autoincrement"
+        String instructorId
+        String instructorName
+        DateTime date "default now"
+        String title
+        String category
+        String level
+        String primaryLanguage
+        String subtitle
+        String description
+        String image
+        String welcomeMessage
+        Float pricing
+        String objectives
+        Boolean isPublished
+    }
+
+   LECTURE {
+    Int id PK "autoincrement"
+    String title
+    String videoUrl
+    String publicId
+    Boolean freePreview
+    Int courseId FK
+}
+
+
+    COURSESTUDENT {
+        Int id PK "autoincrement"
+        String studentId
+        String studentName
+        String studentEmail
+        Float paidAmount
+        Int courseId FK
+    }
+
+    COURSEPROGRESS {
+        String id PK "cuid()"
+        String userId
+        Int courseId
+        Boolean completed
+        DateTime completionDate
+    }
+
+    LECTUREPROGRESS {
+        String id PK "cuid()"
+        Int lectureId
+        Boolean viewed
+        DateTime dateViewed
+        String courseProgressId FK
+    }
+
+    ORDER {
+        String id PK "cuid()"
+        String userId
+        String userName
+        String userEmail
+        String orderStatus
+        String paymentMethod
+        String paymentStatus
+        DateTime orderDate
+        String paymentId
+        String payerId
+        String instructorId
+        String instructorName
+        String courseImage
+        String courseTitle
+        String courseId
+        Float coursePricing
+    }
+
+    STUDENTCOURSE {
+        String id PK "cuid()"
+        String userId
+        String courseId
+        String title
+        String instructorId
+        String instructorName
+        DateTime dateOfPurchase
+        String courseImage
+    }
+
+    %% Relationships (Crow's Foot notation)
+    USER ||--o{ COURSE : "instructs"
+    COURSE ||--o{ LECTURE : "contains"
+    COURSE ||--o{ COURSESTUDENT : "enrolls"
+    COURSESTUDENT }o--|| COURSE : "belongs to"
+    COURSEPROGRESS }o--|| USER : "for"
+    COURSEPROGRESS }o--|| COURSE : "for"
+    COURSEPROGRESS ||--o{ LECTUREPROGRESS : "tracks"
+    LECTUREPROGRESS }o--|| LECTURE : "of"
+    ORDER }o--|| USER : "placed by"
+    ORDER }o--|| COURSE : "for"
+    STUDENTCOURSE }o--|| USER : "belongs to"
+    STUDENTCOURSE }o--|| COURSE : "refers to"
+```

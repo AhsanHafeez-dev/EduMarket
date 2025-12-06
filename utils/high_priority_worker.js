@@ -3,7 +3,7 @@ import { transporter } from "./email.js";
 
 import { connection } from "./notification.js";
 
-const highPriorityWorker = new Worker("high-priority", async (job) => {
+export const highPriorityWorker = new Worker("high-priority", async (job) => {
     
   console.log("processing high priority  email notifications ......");
   // if you have more mails add here

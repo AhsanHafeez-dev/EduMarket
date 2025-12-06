@@ -3,16 +3,14 @@ import IORedis from "ioredis";
 import dotenev from "dotenv";
 dotenev.config();
 console.log({
-  host: process.env.REDIS_HOST || "redis",
-  port: process.env.REDIS_PORT ? Number(process.env.REDIS_PORT) : 6379,
+  url: process.env.UPSTASH_REDIS_URL,
+  token: process.env.UPSTASH_REDIS_TOKEN,
+  maxRetriesPerRequest: null,
 });
 const connection = new IORedis({
-    host: process.env.REDIS_HOST || "redis",
-
-    port: process.env.REDIS_PORT ? Number(process.env.REDIS_PORT) : 6379,
-    maxRetriesPerRequest:null
-    
-  
+  url: process.env.UPSTASH_REDIS_URL,
+  token: process.env.UPSTASH_REDIS_TOKEN,
+  maxRetriesPerRequest: null,
 });
 
 connection.on("connect", () => {

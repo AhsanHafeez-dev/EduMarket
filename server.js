@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config({ path: "./env" });
+dotenv.config({ path: "./.env" });
 import cors from "cors";
 import express from "express";
 import cookie from "cookie-parser";
@@ -18,18 +18,10 @@ const corsOption = {
   credentials: true,
 };
 app.use(
-  cors({
-    origin: [
-      "https://edu-front-end-xi.vercel.app",
-      
-    ],
-    methods: ["GET", "POST", "DELETE", "PUT","PATCH","OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "Accept", "Origin", "X-Requested-With"],
-    credentials:true
-  }),
+  cors(corsOption),
 );
 app.options("*", cors(
-  
+  corsOption
 ));
 
 

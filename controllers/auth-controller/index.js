@@ -9,18 +9,18 @@ import jwt from "jsonwebtoken"
 import {EMAIL_VERIFY_TEMPLATE,PASSWORD_RESET_TEMPLATE, WELCOME_TEMPLATE} from "../../utils/EmailTemplate.js"
 import { transporter } from "../../utils/email.js";
 import { addBulkToLowPriorityNotificationQueue,addToHighPriorityNotificationQueue,addToLowPriorityNotificationQueue } from "../../utils/notification.js";
-import {logger} from "../../utils/logger.js";
+// import {logger} from "../../utils/logger.js";
 
 
 const registerUser = async (req, res) => {
     
-    logger.info("revieved data ", req.body);
+    // logger.info("revieved data ", req.body);
     console.log(req.body);
     let { userName, userEmail, password, role } = req.body;
     
     
     if (!validateUserDetails(userName, userEmail, password, role)) {
-      logger.info("invalid data");
+      // logger.info("invalid data");
       
       res
         .status(httpCodes.badRequest)
@@ -35,7 +35,7 @@ const registerUser = async (req, res) => {
     });
 
     if (existingUser) {
-      logger.info("user already exist returning error");
+      // logger.info("user already exist returning error");
       res
         .status(httpCodes.badRequest)
         .json(
@@ -49,10 +49,10 @@ const registerUser = async (req, res) => {
 
 
     if (userEmail.endsWith("faculty.duet.edu.pk")) {
-      logger.info("registering teacher");
+      // logger.info("registering teacher");
       role = "instructor";
     } else {
-      logger.info("registering student");
+      // logger.info("registering student");
 
       role = "student";
       
@@ -60,7 +60,7 @@ const registerUser = async (req, res) => {
     
 
     
-        logger.info("going to send email functions")
+        // logger.info("going to send email functions")
   const mailOptions = {
     
      userEmail,
@@ -73,7 +73,7 @@ const registerUser = async (req, res) => {
     
     
     password = await bcrypt.hash(password, 10);
-    logger.info("encryoted password");
+    // logger.info("encryoted password");
     
     
 
@@ -86,38 +86,38 @@ const registerUser = async (req, res) => {
         }
         
     });
-    logger.info("user created successfully");
+    // logger.info("user created successfully");
     res.status(httpCodes.created).json(new ApiResponse(httpCodes.created, createdUser, "user created succesfully"));
-    logger.info("sending response")
+    // logger.info("sending response")
     return;
 
 };
 
 
 const loginUser = async (req, res) => {
-    logger.info("handing requestt in auth-controller/login controller")
-    logger.info("data got ",req.body);
+    // logger.info("handing requestt in auth-controller/login controller")
+    // logger.info("data got ",req.body);
     const { userEmail, password } = req.body;
     
     if (!(userEmail && password)) {
-        logger.info("invalid user credentials sending error");
+        // logger.info("invalid user credentials sending error");
         throw new ApiError(httpCodes.badRequest, "user credential cannot be null");
         return;
     }
-    logger.info("quering db");
+    // logger.info("quering db");
     const user = await prisma.user.findUnique({
         where: {
             userEmail
         }
     });
-    logger.info("got db response")
+    // logger.info("got db response")
     
-    if (!user) { logger.info("userNotFound"); throw new ApiError(httpCodes.notFound, "User with this email doesnot exist"); return; }
-    logger.info("user founded");
+    // if (!user) { logger.info("userNotFound"); throw new ApiError(httpCodes.notFound, "User with this email doesnot exist"); return; }
+    // logger.info("user founded");
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
-    logger.info("password not correct");
+    // logger.info("password not correct");
     if (!isPasswordCorrect) {  return res.status(httpCodes.badRequest).json(new ApiResponse(httpCodes.badRequest,{},"wrong password")); }
-    logger.info("password is correct");
+    // logger.info("password is correct");
     const accessToken = jwt.sign({
         id: user.id,
         userEmail: user.userEmail,
@@ -127,7 +127,7 @@ const loginUser = async (req, res) => {
     }, process.env.ACCESS_TOKEN_SECRET, {
       expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
     });
-    logger.info("generated token");
+    // logger.info("generated token");
     res
       .status(httpCodes.ok)
       .cookie("accessToken", accessToken,secureCookieOptions)
@@ -145,7 +145,7 @@ const loginUser = async (req, res) => {
         )
       );
 
-    logger.info("sending response")
+    // logger.info("sending response")
     return;
 
 
@@ -153,7 +153,7 @@ const loginUser = async (req, res) => {
 }
 
 const logoutUser = async (req, res) => {
-    logger.info("logging out user");
+    // logger.info("logging out user");
     res.status(httpCodes.noContent).clearCookie("accessToken",secureCookieOptions).json(new ApiResponse(httpCodes.noContent, {}, "logout successfully"));
     return;
 

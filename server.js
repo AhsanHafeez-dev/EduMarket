@@ -101,6 +101,8 @@ app.get("/", (req, res) => {
 
 app.use((error, req, res, next) => {
   console.log(error.stack);
+  res.header("Access-Control-Allow-Origin", "https://edu-front-end-xi.vercel.app");
+  res.header("Access-Control-Allow-Credentials", "true");
   const statusCode = error.status || httpCodes.serverSideError;
    return res.status(statusCode).json(new ApiResponse(statusCode,{},error.message || "something went wron")) 
     

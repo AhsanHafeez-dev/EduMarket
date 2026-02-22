@@ -89,6 +89,8 @@ app.use("/recommendation", courseRecommendationRouter);
 
 
 app.get("/", (req, res) => {
+  console.log("hello server");
+  
   return res.status(200).json({ message: "welcome to course app" });
 })
 

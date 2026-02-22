@@ -8,7 +8,7 @@ const commentRouter = express.Router();
 
 commentRouter.use(authenticate)
 // lecture comments routes
-commentRouter.route("lectures/:lectureId").get(getAllCommentsOfLecture);
+commentRouter.route("/lectures/:lectureId").get(getAllCommentsOfLecture);
 commentRouter.route("/:lectureId/:userId").post(addCommentToLecture);
 
 

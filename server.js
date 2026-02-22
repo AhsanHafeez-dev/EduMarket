@@ -6,17 +6,13 @@ import cookie from "cookie-parser";
 import { confirmPayment } from "./controllers/student-controller/order-controller.js";
 const app = express();
 const corsOption = {
-  origin: ["*","https://edu-front-end-xi.vercel.app"],
-  allowedHeaders: ["Content-Type","Authorization",],
+  origin: ["*", "https://edu-front-end-xi.vercel.app"],
+  allowedHeaders: ["Content-Type", "Authorization",],
   credentials: true,
 };
 app.use(
   cors(corsOption),
 );
-app.options("*", cors(
-  corsOption
-));
-
 
 app.post(
   "/student/order/confirm", // The full path to your webhook
@@ -28,9 +24,9 @@ app.post(
 app.use(express.json({ limit: "16kb" }));
 app.set("json replacer", (key, value) =>
   typeof value === "bigint" ? value.toString() : value
-  
+
 );
-app.use(express.urlencoded({ extended: true,limit:"16kb" }));
+app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(cookie())
 
 
@@ -48,7 +44,7 @@ app.use(cookie())
 //           url: message.split(" ")[1],
 //           status: message.split(" ")[2],
 //           responseTime: message.split(" ")[3],
-          
+
 //         };
 //         logger.info(JSON.stringify(logObject));
 //       },
@@ -62,16 +58,16 @@ app.use(cookie())
 
 
 import { authRoutes } from "./routes/auth-routes/index.js"
-import {instructorCourseRoutes} from "./routes/instructor-routes/course-routes.js"
+import { instructorCourseRoutes } from "./routes/instructor-routes/course-routes.js"
 import { likeRouter } from "./routes/like-comment-routes/like.routes.js";
 import { commentRouter } from "./routes/like-comment-routes/comment.routes.js";
-import  {mediaRoutes} from "./routes/instructor-routes/media-routes.js";
+import { mediaRoutes } from "./routes/instructor-routes/media-routes.js";
 
-import {studentViewCourseRoutes} from "./routes/student-routes/course-routes.js";
-import {studentViewOrderRoutes} from "./routes/student-routes/order-routes.js";
-import {studentCoursesRoutes} from "./routes/student-routes/student-courses-routes.js";
-import {studentCourseProgressRoutes} from "./routes/student-routes/course-progress-routes.js";
-import {courseRecommendationRouter} from "./routes/courseRecommendation/course.controller.js"
+import { studentViewCourseRoutes } from "./routes/student-routes/course-routes.js";
+import { studentViewOrderRoutes } from "./routes/student-routes/order-routes.js";
+import { studentCoursesRoutes } from "./routes/student-routes/student-courses-routes.js";
+import { studentCourseProgressRoutes } from "./routes/student-routes/course-progress-routes.js";
+import { courseRecommendationRouter } from "./routes/courseRecommendation/course.controller.js"
 import { httpCodes } from "./constants.js";
 import { ApiResponse } from "./utils/ApiResponse.js";
 
@@ -90,15 +86,15 @@ app.use("/recommendation", courseRecommendationRouter);
 
 app.get("/", (req, res) => {
   console.log("hello server");
-  
+
   return res.status(200).json({ message: "welcome to course app" });
 })
 
 app.use((error, req, res, next) => {
   console.log(error.stack);
   const statusCode = error.status || httpCodes.serverSideError;
-   return res.status(statusCode).json(new ApiResponse(statusCode,{},error.message || "something went wron")) 
-    
+  return res.status(statusCode).json(new ApiResponse(statusCode, {}, error.message || "something went wron"))
+
 })
 
 export default app;

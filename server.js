@@ -28,7 +28,11 @@ app.use(
       "https://edu-front-end-xi.vercel.app/",
     ],
     methods: ["GET", "POST", "DELETE", "PUT"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Access-Control-Allow-Origin",
+    ],
   }),
 );
 

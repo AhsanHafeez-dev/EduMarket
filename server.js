@@ -108,11 +108,11 @@ app.use((error, req, res, next) => {
     
 })
 
-
-const port = process.env.PORT || 5000;
+export default app;
+// const port = process.env.PORT || 5000;
 // app.listen(port, () => {
 //   console.log(`app listening on port ${port}`);
 //   logger.info(`app listening on port ${port}`);
 // });
-export default app;
+
 

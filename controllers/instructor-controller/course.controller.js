@@ -4,7 +4,7 @@ import { ApiError } from "../../utils/ApiError.js";
 import { ApiResponse } from "../../utils/ApiResponse.js";
 import { transporter } from "../../utils/email.js"
 import {COURSE_UPDATE_NOTIFICATION_TEMPLATE} from "../../utils/EmailTemplate.js"
-import {addBulkToLowPriorityNotificationQueue} from "../../utils/notification.js"
+// import {addBulkToLowPriorityNotificationQueue} from "../../utils/notification.js"
 
 const addNewCourse = async (req, res) => {
   try {
@@ -164,7 +164,7 @@ const updateCourseById = async (req, res) => {
           `${process.env.CLIENT_URL}/student/course-progress/${updatedCourse.id}`
         )
   }));
-    addBulkToLowPriorityNotificationQueue("updation email", allStudentEmails); 
+    // addBulkToLowPriorityNotificationQueue("updation email", allStudentEmails); 
     
     
     

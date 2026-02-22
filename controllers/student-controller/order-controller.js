@@ -368,7 +368,7 @@ const confirmPayment = async (req, res) => {
   // ✅ Handle different event types
 
 let metadata = event.data.object.metadata;
-  if (event.type === "invoice.payment_succeeded") {
+  if (event.type === "invoice.payment_succeeded"  || event.type == "invoice.paid") {
     // { instructorId: '7', userId: '43', courseId: '17' }
     
     // 3) Update order status in your DB

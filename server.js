@@ -23,12 +23,10 @@ app.use(express.urlencoded({ extended: true,limit:"16kb" }));
 app.use(cookie())
 app.use(
   cors({
-    origin: [
-      "https://edu-front-end-xi.vercel.app",
-    ],
+    origin: ["https://edu-front-end-xi.vercel.app"],
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  }),
 );
 
 import { logger } from "./utils/logger.js";

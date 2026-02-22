@@ -4,7 +4,7 @@ import { prisma } from "../../prisma/index.js";
 import { ApiResponse } from "../../utils/ApiResponse.js";
 import { PAYMENT_CONFIRMATION_TEMPLATE } from "../../utils/EmailTemplate.js";
 
-import { addToHighPriorityNotificationQueue } from "../../utils/notification.js";
+// import { addToHighPriorityNotificationQueue } from "../../utils/notification.js";
 import { Session } from "@google/genai";
 
 
@@ -204,7 +204,7 @@ const createOrder = async (req, res) => {
    };
    console.log("recipet url", session.invoice);
 
-   addToHighPriorityNotificationQueue("purchase email", mailOptions);
+  //  addToHighPriorityNotificationQueue("purchase email", mailOptions);
    
     // 2) Verify payment with Stripe
     // const session2 = await stripe.checkout.sessions.retrieve(session.id);
@@ -428,7 +428,7 @@ let metadata = event.data.object.metadata;
     };
     console.log("recipet url",event.data.object.receipt_url);
 
-    addToHighPriorityNotificationQueue("purchase email", mailOptions);
+    // addToHighPriorityNotificationQueue("purchase email", mailOptions);
   }
   else if (event.type === "invoice_payment.unpaid" || event.type === "checkout.session.expired" || event.type === "invoice.payment_failed"|| event.type==="invoice.finalization_failed" || event.type==="inv") {
     await prisma.order.deleteMany({ where: { userId:metadata.userId,courseId:metadata.courseId } });

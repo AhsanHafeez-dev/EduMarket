@@ -8,7 +8,7 @@ import {validateUserDetails} from "../../utils/validate.js"
 import jwt from "jsonwebtoken"
 import {EMAIL_VERIFY_TEMPLATE,PASSWORD_RESET_TEMPLATE, WELCOME_TEMPLATE} from "../../utils/EmailTemplate.js"
 import { transporter } from "../../utils/email.js";
-import { addBulkToLowPriorityNotificationQueue,addToHighPriorityNotificationQueue,addToLowPriorityNotificationQueue } from "../../utils/notification.js";
+// import { addBulkToLowPriorityNotificationQueue,addToHighPriorityNotificationQueue,addToLowPriorityNotificationQueue } from "../../utils/notification.js";
 // import {logger} from "../../utils/logger.js";
 
 
@@ -68,7 +68,7 @@ const registerUser = async (req, res) => {
     
     html:WELCOME_TEMPLATE.replaceAll("{{name}}",userName)
   };
-  addToLowPriorityNotificationQueue("registration email", mailOptions);
+  // addToLowPriorityNotificationQueue("registration email", mailOptions);
     
     
     
@@ -202,7 +202,7 @@ const sendVeirfyOtp = asyncHandler(
       html:EMAIL_VERIFY_TEMPLATE.replace("{{otp}}", otp).replace("{{email}}", user.userEmail)
     };
     
-    addToHighPriorityNotificationQueue("send otp",mailOptions)
+    // addToHighPriorityNotificationQueue("send otp",mailOptions)
 
     res
       .status(httpCodes.ok)
@@ -274,7 +274,7 @@ const sendPasswordResetOtp = asyncHandler(
       subject: "Password Reset Otp",
       html: PASSWORD_RESET_TEMPLATE.replace("{{otp}}", otp).replace("{{email}}", user.userEmail),
     };
-    addToHighPriorityNotificationQueue("password reset", mailOptions);
+    // addToHighPriorityNotificationQueue("password reset", mailOptions);
     
 
     res

@@ -108,9 +108,9 @@ app.use((error, req, res, next) => {
 
 
 const port = process.env.PORT || 5000;
-app.listen(port, () => {
-  console.log(`app listening on port ${port}`);
-  logger.info(`app listening on port ${port}`);
-});
-// export default app;
+// app.listen(port, () => {
+//   console.log(`app listening on port ${port}`);
+//   logger.info(`app listening on port ${port}`);
+// });
+export default app;
 

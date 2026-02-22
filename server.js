@@ -5,6 +5,17 @@ import express from "express";
 import cookie from "cookie-parser";
 import { confirmPayment } from "./controllers/student-controller/order-controller.js";
 const app = express();
+app.use(
+  cors({
+    origin: [
+      "https://edu-front-end-xi.vercel.app",
+      
+    ],
+    methods: ["GET", "POST", "DELETE", "PUT","PATCH","OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "Accept", "Origin", "X-Requested-With"],
+    credentials:true
+  }),
+);app.options("*", cors(corsOptions));
 
 
 app.post(
@@ -21,17 +32,7 @@ app.set("json replacer", (key, value) =>
 );
 app.use(express.urlencoded({ extended: true,limit:"16kb" }));
 app.use(cookie())
-app.use(
-  cors({
-    origin: [
-      "https://edu-front-end-xi.vercel.app",
-      
-    ],
-    methods: ["GET", "POST", "DELETE", "PUT","PATCH","OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "Accept", "Origin", "X-Requested-With"],
-    credentials:true
-  }),
-);
+
 
 import { logger } from "./utils/logger.js";
 import morgan from "morgan";

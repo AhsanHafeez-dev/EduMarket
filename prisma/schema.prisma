@@ -55,7 +55,7 @@ model Course {
   isFree                      Boolean         @default(false)
   comments                    Comment[]
   noOfComments                Int             @default(0)
-  specialization              Specialization? @relation("specializationCourses", fields: [specializationId], references: [id])
+  specialization              Specialization? @relation("specializationCourses", fields: [specializationId], references: [id],onDelete: Cascade)
   specializationId            String?
   noOfStudents                Int             @default(0)
   noOfStudentsCompletedCourse Int             @default(0)
@@ -73,13 +73,13 @@ model Lecture {
   videoUrl     String
   publicId     String       @map("public_id")
   freePreview  Boolean
-  course       Course?      @relation("CourseLectures", fields: [courseId], references: [id])
+  course       Course?      @relation("CourseLectures", fields: [courseId], references: [id],onDelete: Cascade)
   courseId     Int?
   comment      Comment[]
   likes        Like[]
   noOfComments Int          @default(0)
   noOfLikes    Int          @default(0)
-  module       Module?      @relation(fields: [moduleId], references: [id])
+  module       Module?      @relation(fields: [moduleId], references: [id],onDelete: Cascade)
   moduleId     String?
   assignments  Assignment[]
   
@@ -94,7 +94,7 @@ model CourseStudent {
   studentName  String
   studentEmail String
   paidAmount   Float
-  course       Course @relation("CourseEnrollments", fields: [courseId], references: [id])
+  course       Course @relation("CourseEnrollments", fields: [courseId], references: [id],onDelete: Cascade)
   courseId     Int
   attendance   Float? @default(0)
 
@@ -121,7 +121,7 @@ model LectureProgress {
   lectureId        Int
   viewed           Boolean
   dateViewed       DateTime?
-  courseProgress   CourseProgress @relation(fields: [courseProgressId], references: [id])
+  courseProgress   CourseProgress @relation(fields: [courseProgressId], references: [id],onDelete: Cascade)
   courseProgressId String
 
   @@index([lectureId])
@@ -181,7 +181,7 @@ model Comment {
   lecture   Lecture? @relation(fields: [lectureId], references: [id],onDelete: Cascade)
   lectureId Int?
 
-  course   Course? @relation(fields: [courseId], references: [id])
+  course   Course? @relation(fields: [courseId], references: [id],onDelete: Cascade)
   courseId Int?
 
   likes Like[]
@@ -197,13 +197,13 @@ model Comment {
 model Like {
   id String @id @default(cuid())
 
-  lecture   Lecture? @relation(fields: [lectureId], references: [id])
+  lecture   Lecture? @relation(fields: [lectureId], references: [id],onDelete: Cascade)
   lectureId Int?
 
-  comment   Comment? @relation(fields: [commentId], references: [id])
+  comment   Comment? @relation(fields: [commentId], references: [id],onDelete: Cascade)
   commentId String?
 
-  owner   User @relation(fields: [ownerId], references: [id])
+  owner   User @relation(fields: [ownerId], references: [id],onDelete: Cascade)
   ownerId Int
 }
 
@@ -226,10 +226,10 @@ model Module {
 model Certificate {
   id String @id @default(cuid())
 
-  course   Course? @relation(fields: [courseId], references: [id])
+  course   Course? @relation(fields: [courseId], references: [id],onDelete: Cascade)
   courseId Int?
 
-  user   User? @relation(fields: [userId], references: [id])
+  user   User? @relation(fields: [userId], references: [id],onDelete: Cascade)
   userId Int?
 
   certificateUrl String
@@ -312,7 +312,7 @@ model QuestionResponse {
   questionId String
 
   /// one of these will be used depending on question type
-  selectedOption   Option? @relation(fields: [selectedOptionId], references: [id])
+  selectedOption   Option? @relation(fields: [selectedOptionId], references: [id],onDelete: Cascade)
   selectedOptionId String?
   textAnswer       String?
 

@@ -158,33 +158,8 @@ const createOrder = async (req, res) => {
     }
     console.log("Id of purchase by ",payerId,"  for course : ",courseId," is : ",newlyCreatedCourseOrder?.id)
    
-   await prisma.studentCourse.create({
-     data: {
-       userId: userId,
-       courseId: courseId,
-       courseImage: courseImage,
-       instructorId: instructorId,
-       instructorName: instructorName,
-       dateOfPurchase: orderDate,
-       title: courseTitle,
-     },
-   });
-   console.log("added student in list of students who have purchased course  "); 
-    await prisma.courseStudent.create({
-      data: {
-        studentId: userId,
-        studentName: userName,
-        studentEmail: userEmail,
-        paidAmount: parseFloat(coursePricing),
-        courseId: parseInt(courseId + ""),
-      },
-    });
-
-    await prisma.course.update({
-      where: { id: parseInt(courseId) },
-      data: { noOfStudents: { increment: 1 } },
-    });
-
+   
+   
 
    
    
@@ -411,6 +386,8 @@ let metadata = event.data.object.metadata;
     });
 
     await prisma.course.update({ where: { id: parseInt(metadata.courseId) }, data: { noOfStudents: { increment: 1 } } });
+     
+
 
     console.log("courrse purchased");
 

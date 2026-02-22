@@ -11,7 +11,7 @@ import { authenticate } from "../../middleware/auth-middleware.js";
 
 const mediaRoutes = express.Router();
 
-const upload = multer(multer.diskStorage());
+const upload = multer(multer.memoryStorage());
 // const upload = multer();
 // import {upload} from "../../middleware/multer.middleware.js"
 mediaRoutes.use(authenticate)

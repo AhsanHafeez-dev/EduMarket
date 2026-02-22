@@ -25,7 +25,7 @@ app.use(
   cors({
     origin: [
       "https://edu-front-end-xi.vercel.app",
-      "https://edu-front-end-xi.vercel.app/",
+      
     ],
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [

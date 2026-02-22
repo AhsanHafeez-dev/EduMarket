@@ -34,10 +34,10 @@ app.use(express.urlencoded({ extended: true,limit:"16kb" }));
 app.use(cookie())
 
 
-import { logger } from "./utils/logger.js";
-import morgan from "morgan";
+// import { logger } from "./utils/logger.js";
+// import morgan from "morgan";
 
-const morganFormat = ":method :url :status :response-time ms";
+// const morganFormat = ":method :url :status :response-time ms";
 
 // app.use(
 //   morgan(morganFormat, {

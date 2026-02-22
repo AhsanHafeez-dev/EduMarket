@@ -9,14 +9,15 @@ import jwt from "jsonwebtoken"
 import {EMAIL_VERIFY_TEMPLATE,PASSWORD_RESET_TEMPLATE, WELCOME_TEMPLATE} from "../../utils/EmailTemplate.js"
 import { transporter } from "../../utils/email.js";
 import { addBulkToLowPriorityNotificationQueue,addToHighPriorityNotificationQueue,addToLowPriorityNotificationQueue } from "../../utils/notification.js";
-import {logger} from "../../utils/logger.js"
+import {logger} from "../../utils/logger.js";
+
+
 const registerUser = async (req, res) => {
     
     logger.info("revieved data ", req.body);
     console.log(req.body);
     let { userName, userEmail, password, role } = req.body;
     
-    let registrationText ="Thank you for registering with us. We're excited to have you onboard! You can now explore our courses, track your     progress, and grow your skills.If you have any questions, feel free to reach out to our support team. Happy learning";
     
     if (!validateUserDetails(userName, userEmail, password, role)) {
       logger.info("invalid data");
@@ -91,6 +92,8 @@ const registerUser = async (req, res) => {
     return;
 
 };
+
+
 const loginUser = async (req, res) => {
     logger.info("handing requestt in auth-controller/login controller")
     logger.info("data got ",req.body);

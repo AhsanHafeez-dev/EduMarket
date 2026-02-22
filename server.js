@@ -3,6 +3,7 @@ dotenv.config({ path: "./env" });
 import cors from "cors";
 import express from "express";
 import cookie from "cookie-parser";
+import { confirmPayment } from "./controllers/student-controller/order-controller.js";
 const app = express();
 
 
@@ -78,7 +79,7 @@ import {studentViewOrderRoutes} from "./routes/student-routes/order-routes.js";
 import {studentCoursesRoutes} from "./routes/student-routes/student-courses-routes.js";
 import {studentCourseProgressRoutes} from "./routes/student-routes/course-progress-routes.js";
 import {courseRecommendationRouter} from "./routes/courseRecommendation/course.controller.js"
-import { confirmPayment } from "./controllers/student-controller/order-controller.js";
+
 
 app.use("/auth", authRoutes);
 app.use("/media", mediaRoutes);
@@ -104,12 +105,12 @@ app.use((error, req, res, next) => {
 
 
 const port = process.env.PORT || 5000;
-// app.listen(port, () => {
-//   console.log(`app listening on port ${port}`);
-//   logger.info(`app listening on port ${port}`);
-// });
+app.listen(port, () => {
+  console.log(`app listening on port ${port}`);
+  logger.info(`app listening on port ${port}`);
+});
 app.get("/", (req, res) => {
   res.status(200).json({ message: "hello moto" });
 });
-export default app;
+// export default app;
 

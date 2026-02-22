@@ -48,15 +48,9 @@ const getAllCourses = async (req, res) => {
     console.log(
       "handling request in instructor-controller/course-controller on getAllCourses controller"
     );
-    const courseList = await prisma.course.findMany({
-      
-    });
+    const courseList = await prisma.course.findMany({where:{instructorId:req?.user?.id},include:{students:true}});
     
-    for (let i = 0; i < courseList.length; i++){
-      
-      courseList[i].students = await prisma.courseStudent.findMany({ where: { courseId: courseList[i].id } });
-      
-    }
+   
 
     
     // console.log(courseList)

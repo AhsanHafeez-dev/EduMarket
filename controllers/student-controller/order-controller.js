@@ -106,7 +106,7 @@ const createOrder = async (req, res) => {
         },
       ],
 
-      client_reference_id: "cart_98765",
+      
       expires_at: Math.floor(Date.now() / 1000) + 3600, // expire in 1 hour
 
       billing_address_collection: "auto",
@@ -118,7 +118,7 @@ const createOrder = async (req, res) => {
       custom_text: {
         after_submit: { message: "Thanks! We’ll get started right away." },
       },
-      discounts: [{ promotion_code: "promo_1SM5dcRvBiYS0PLoEMFga4HU" }],
+      
     });
     payerId += "";
     console.log("\n\n\nresponse of strips",session);

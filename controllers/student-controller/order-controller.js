@@ -113,7 +113,7 @@ const createOrder = async (req, res) => {
       shipping_address_collection: {
         allowed_countries: ["AC", "AD", "ID", "PK", "IN", "US", "UZ"],
       },
-      shipping_options: [{ shipping_rate: "shr_1SM5PKRvBiYS0PLoMyYNNwME" }],
+
 
       custom_text: {
         after_submit: { message: "Thanks! We’ll get started right away." },

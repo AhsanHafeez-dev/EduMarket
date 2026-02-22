@@ -6,15 +6,8 @@ import cookie from "cookie-parser";
 import { confirmPayment } from "./controllers/student-controller/order-controller.js";
 const app = express();
 const corsOption = {
-  origin: ["https://edu-front-end-xi.vercel.app"],
-  methods: ["GET", "POST", "DELETE", "PUT", "PATCH", "OPTIONS"],
-  allowedHeaders: [
-    "Content-Type",
-    "Authorization",
-    "Accept",
-    "Origin",
-    "X-Requested-With",
-  ],
+  origin: ["*","https://edu-front-end-xi.vercel.app"],
+  allowedHeaders: ["Content-Type","Authorization",],
   credentials: true,
 };
 app.use(
@@ -101,8 +94,6 @@ app.get("/", (req, res) => {
 
 app.use((error, req, res, next) => {
   console.log(error.stack);
-  res.header("Access-Control-Allow-Origin", "https://edu-front-end-xi.vercel.app");
-  res.header("Access-Control-Allow-Credentials", "true");
   const statusCode = error.status || httpCodes.serverSideError;
    return res.status(statusCode).json(new ApiResponse(statusCode,{},error.message || "something went wron")) 
     

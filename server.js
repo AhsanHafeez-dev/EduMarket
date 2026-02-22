@@ -5,6 +5,18 @@ import express from "express";
 import cookie from "cookie-parser";
 import { confirmPayment } from "./controllers/student-controller/order-controller.js";
 const app = express();
+const corsOption = {
+  origin: ["https://edu-front-end-xi.vercel.app"],
+  methods: ["GET", "POST", "DELETE", "PUT", "PATCH", "OPTIONS"],
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "Accept",
+    "Origin",
+    "X-Requested-With",
+  ],
+  credentials: true,
+};
 app.use(
   cors({
     origin: [
@@ -15,7 +27,10 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization", "Accept", "Origin", "X-Requested-With"],
     credentials:true
   }),
-);app.options("*", cors(corsOptions));
+);
+app.options("*", cors(
+  
+));
 
 
 app.post(
@@ -72,6 +87,8 @@ import {studentViewOrderRoutes} from "./routes/student-routes/order-routes.js";
 import {studentCoursesRoutes} from "./routes/student-routes/student-courses-routes.js";
 import {studentCourseProgressRoutes} from "./routes/student-routes/course-progress-routes.js";
 import {courseRecommendationRouter} from "./routes/courseRecommendation/course.controller.js"
+import { httpCodes } from "./constants.js";
+import { ApiResponse } from "./utils/ApiResponse.js";
 
 
 app.use("/auth", authRoutes);
@@ -91,8 +108,9 @@ app.get("/", (req, res) => {
 })
 
 app.use((error, req, res, next) => {
-    console.log(error.stack);
-    
+  console.log(error.stack);
+  const statusCode = error.status || httpCodes.serverSideError;
+   return res.status(statusCode).json(new ApiResponse(statusCode,{},error.message || "something went wron")) 
     
 })
 
@@ -101,9 +119,6 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
   logger.info(`app listening on port ${port}`);
-});
-app.get("/", (req, res) => {
-  res.status(200).json({ message: "hello moto" });
 });
 // export default app;
 

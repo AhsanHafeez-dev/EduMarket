@@ -24,16 +24,6 @@ app.use(cookie())
 app.use(
   cors({
     origin: [
-      "https://edu-front-i9kud6sun-ahsans-projects-6799ab6a.vercel.app",
-      "https://edu-front-i9kud6sun-ahsans-projects-6799ab6a.vercel.app/",
-      "http://localhost:3000", // for local testing,
-      "https://edu-front-ind36pu3d-ahsans-projects-6799ab6a.vercel.app/",
-      "http://192.168.29.1:3000",
-      "http://localhost:3000",
-      "https://j9r4m1mn-5000.asse.devtunnels.ms/",
-      "https://j9r4m1mn-3000.asse.devtunnels.ms",
-      "https://j9r4m1mn-3000.asse.devtunnels.ms/",
-      "https://edu-front-end-xi.vercel.app/",
       "https://edu-front-end-xi.vercel.app",
     ],
     methods: ["GET", "POST", "DELETE", "PUT"],
